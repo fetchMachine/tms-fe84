@@ -1,6 +1,35 @@
   ## ОКРУЖЕНИЕ
   - [Playground](https://www.typescriptlang.org/play)
   - typescript / ts-node / nodemon
+  
+  ## НАСТРОЙКА ЛОКАЛЬНОГО ОКРУЖЕНИЯ
+  ```bash
+  npm init -y
+  git init -q
+  npm i typescript ts-node nodemon
+  npx tsc --init
+  ```
+  
+  В файле ``tsconfig.json`` расскоментировать все в блоке ``/* Type Checking */``
+  Создать файл для работы ``index.ts``.
+  
+  Скомпилировать ts файл в js
+  ```bash
+  npx tsc
+  ```
+  
+  Запустить nodemon чтобы проект выполнялся на каждое редактирование файла
+  ```bash
+  npx nodemon index.ts
+  ```
+  
+  При желании можно добавить эти комманды в скрипты проекта (файл ``package.json``, поле ``"scripts"``)
+  ```json
+  "scripts": {
+    "dev": "nodemon index.ts",
+    "build": "tsc"
+  }
+  ```
 
   ## TYPESCRIPT ЭТО
   - надмножество JS
