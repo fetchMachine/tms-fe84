@@ -143,10 +143,7 @@ const toLowerCase1 = (value: string | number): number | string => {
 }
 
 const toLowerCase2 = (value: string | number): number | string => {
-  if (typeof value === 'number'){
-    return value;
-  }
-  return value.toLowerCase() ;
+  return (value as string).toLowerCase() ;
 }
 
 
