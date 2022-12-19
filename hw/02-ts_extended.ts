@@ -2,13 +2,6 @@
 // создать с помощью Record тип объекта ключи которого любая строка, а значения строка или число
 type myCollectionOfNumberOrString = any;
 
-interface User {
-  id: number;
-  name: string;
-  age: number;
-  friends: User[];
-}
-
 // создать тип на основе BaseType с помощью утилити тайпов, но все поля должны быть обязательны
 interface BaseType {
   id: number;
@@ -26,7 +19,7 @@ const sum = (a: number, b: number): number => a + b;
 
 type SumReturn = any;
 
-// создать тип на основе данного выбрар только поля id и label
+// создать тип на основе данного выбрав только поля id и label
 interface Car {
   id: number;
   price: number;
@@ -36,6 +29,13 @@ interface Car {
 type CarNoCost = any;
 
 // создать интерфейс на основе User у которого нет поля id, а все остальные поля - опциональные
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  friends: User[];
+}
+
 type NewUser = any;
 
 // Написать дженерик тип, который достает второй параметр функии
