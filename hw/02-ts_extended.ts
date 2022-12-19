@@ -9,6 +9,32 @@ interface User {
   friends: User[];
 }
 
+// создать тип на основе BaseType с помощью утилити тайпов, но все поля должны быть обязательны
+interface BaseType {
+  id: number;
+  age?: number;
+  name?: string;
+}
+
+type RequiredType = any;
+
+// создать тип на основе BaseType с помощью утилити тайпов, но все поля должны быть ридонли
+type ReaodnlyType = any;
+
+// вывести с помощью утилити тайпов тип возвращаемого значения функции
+const sum = (a: number, b: number): number => a + b;
+
+type SumReturn = any;
+
+// создать тип на основе данного выбрар только поля id и label
+interface Car {
+  id: number;
+  price: number;
+  label: string;
+}
+
+type CarNoCost = any;
+
 // создать интерфейс на основе User у которого нет поля id, а все остальные поля - опциональные
 type NewUser = any;
 
