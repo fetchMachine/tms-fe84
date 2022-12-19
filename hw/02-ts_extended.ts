@@ -52,3 +52,40 @@ type TypeWithNull = any;
 
 // написать дженерик обратный NonNullable, т.е. чтобы к текущему типу добавлся тип null | undefined;
 type Nullable = any;
+
+// с помощью дженерика затипизировать функцию
+const packToObject = (value) => ({ value });
+
+// Создать класс Logger применив интерфейс ILogger
+interface ILogger {
+  log: () => void;
+}
+
+class Logger {};
+
+// сделать метод доступным только самого класса, метод logB доступным для самого класса и классов наследников,
+// метод статическим и доступным только для самого класса
+class TestClassA {
+  logA () {}
+
+  logB () {}
+
+  logC () {}
+}
+
+class TestClassB extends TestClassA {
+  log () {
+    // this.logA(); // должен быть недоступен
+    this.logB(); // должен быть ок
+  }
+}
+
+
+// не создавая новые типы затипизировать функцию startWatch
+class Watcher {
+  watch () {}
+}
+
+const startWatch = (value) => {
+  value.watch();
+}
