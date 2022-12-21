@@ -141,7 +141,7 @@
   
   // благодаря ограничению через ключевое слово extends мы не сможем прокинуть первым параметром что-то отличное от объекта,
   // а вторым что-то отличное от ключа этого объекта
-  const { id } = getByKey([{ name: 'Alex', id: 2 }], 'id'); // fail, первые параметр на объект
-  const { age } = getByKey({ name: 'Alex', id: 2 }, 'age'); // fail, второй параметр не ключ объекта, т.к. поля age не существует
-  const { id } = getByKey({ name: 'Alex', id: 2 }, 'id'); // ok
+  const id = getByKey([{ name: 'Alex', id: 2 }], 'id'); // fail, первые параметр на объект
+  const age = getByKey({ name: 'Alex', id: 2 }, 'age'); // fail, второй параметр не ключ объекта, т.к. поля age не существует
+  const id = getByKey({ name: 'Alex', id: 2 }, 'id'); // ok
   ```
