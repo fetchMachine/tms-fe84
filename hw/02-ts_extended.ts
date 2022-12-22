@@ -1,6 +1,6 @@
 
 // создать с помощью Record тип объекта ключи которого любая строка, а значения строка или число
-type myCollectionOfNumberOrString = any;
+type myCollectionOfNumberOrString = Record<string, string | number>;
 
 // создать тип на основе BaseType с помощью утилити тайпов, но все поля должны быть обязательны
 interface BaseType {
@@ -9,15 +9,15 @@ interface BaseType {
   name?: string;
 }
 
-type RequiredType = any;
+type RequiredType = Required<BaseType>;
 
 // создать тип на основе BaseType с помощью утилити тайпов, но все поля должны быть ридонли
-type ReaodnlyType = any;
+type ReadonlyType = Readonly<BaseType>;
 
 // вывести с помощью утилити тайпов тип возвращаемого значения функции
 const sum = (a: number, b: number): number => a + b;
 
-type SumReturn = any;
+type SumReturn = ReturnType<typeof sum>;
 
 // создать тип на основе данного выбрав только поля id и label
 interface Car {
@@ -26,7 +26,7 @@ interface Car {
   label: string;
 }
 
-type CarNoCost = any;
+type CarNoCost = Pick<Car, "id" | "label">;
 
 // создать интерфейс на основе User у которого нет поля id, а все остальные поля - опциональные
 interface User {
@@ -36,41 +36,43 @@ interface User {
   friends: User[];
 }
 
-type NewUser = any;
+type NewUser = Partial<Omit<User, "id">>;
 
 // Написать дженерик тип, который достает второй параметр функии
 type Sum = (a: number, b: number) => number;
 type Log = (msg: string, role: 'admin' | 'user') => number;
 
-type SecondParam = any;
+type SecondParam = Parameters<Sum>[1];
 // напр: SecondParam<typeof Sum> => number
 // напр: SecondParam<typeof Log> => 'admin' | 'user'
 
 // сделать тип обязательным с помощью утили тайпов, т.е. чтобы не мог быть null
 type Type = string | number | boolean | null | undefined;
-type TypeWithNull = any;
+type TypeWithNull = NonNullable<Type>;
 
 // написать дженерик обратный NonNullable, т.е. чтобы к текущему типу добавлся тип null | undefined;
-type Nullable = any;
+type Nullable<T> = T | undefined | null;
 
 // с помощью дженерика затипизировать функцию
-const packToObject = (value) => ({ value });
+const packToObject = <V>(value: V) => ({ value });
 
 // Создать класс Logger применив интерфейс ILogger
 interface ILogger {
   log: () => void;
 }
 
-class Logger {};
+class Logger implements ILogger {
+  log: () => void
+}
 
 // сделать метод доступным только самого класса, метод logB доступным для самого класса и классов наследников,
 // метод статическим и доступным только для самого класса
 class TestClassA {
-  logA () {}
+  private logA () {}
 
-  logB () {}
+  protected logB () {}
 
-  logC () {}
+  private static logC () {}
 }
 
 class TestClassB extends TestClassA {
@@ -86,6 +88,6 @@ class Watcher {
   watch () {}
 }
 
-const startWatch = (value) => {
+const startWatch = (value: Watcher) => {
   value.watch();
 }
