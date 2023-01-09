@@ -62,6 +62,7 @@ class Counter extends Component<{}, { value: number }> {
 Можно обновлять как весь стейт за раз, так и частично.
 Работает только для свойств первого уровня, вложенные объекты перезатрутся и при их обновлении надо передавать в this.setState **весь** текущий стейт.
 ```
+typescript
 class App extends Component<{}, { value: number; inputValue: string }> {
   state = { counterValue: 0, inputValue: '' }
 
@@ -74,11 +75,10 @@ class App extends Component<{}, { value: number; inputValue: string }> {
     this.setState({ counterValue })
   }
 }
-
 ```
 
 ## Управляемые и неуправляемые компоненты
-
+```typescript
 class Input extends Component<{}, { value: string }> {
   state = { value: '' }
 
@@ -97,6 +97,7 @@ class Input extends Component<{}, { value: string }> {
     );
   }
 }
+```typescript
 
 # Lifecycle
 [lifecycle resume](https://github.com/fetchMachine/tms-js-pro/blob/main/33-lifecycle/lifecycle_resume.md)
