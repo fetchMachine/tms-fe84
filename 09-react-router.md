@@ -95,7 +95,7 @@ const App = () => {
 
 
                  { /* если юзер авторизован, то показываем ему нашу секретную страницу, иначе перенаправляем на страницу логина */ }
-                <Route path="/secret" elemen={ isUserAthorized ? <SecretPage /> : <Redirect to="/login"> } />
+                <Route path="/secret" elemen={ isUserAthorized ? <SecretPage /> : <Navigate to="/login"> } />
             </Switch>
     )
 }
