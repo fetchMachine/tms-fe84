@@ -129,7 +129,7 @@ getData.rejected.toString(); - ошибка
 ```javascript
 const getData = createAsyncThunk('slicePrefix', fetchSomeData);
 
-const slice = {
+const slice = createSlice({
     name,
     initialStore: { data: [], loadStatus: 'unknown' },
     reducers: {},
@@ -147,5 +147,5 @@ const slice = {
           state.loadStatus = 'error';
         })
   },
-}
+});
 ```
