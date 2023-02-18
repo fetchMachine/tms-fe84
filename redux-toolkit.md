@@ -60,7 +60,7 @@ export const { actions, reducer } = createSlice({
 **initialState** - начальное состояние.
 
 
-**reducer** - это одновременно **и actionCreator и *reducer**. Раньше мы писали reducer как набор switch/case который обрабатывал action.type. При создании слайса мы пишем маленькие редюсеры для каждого отдельного action.type. Т.е. можно думать, что каждый такой маленький reducer (например, increase и decrease из примера выше) добавляет очередной case в switch/case конструкцию итогового reducer.
+**reducer** - это одновременно **и actionCreator и reducer**. Раньше мы писали reducer как набор switch/case который обрабатывал action.type. При создании слайса мы пишем маленькие редюсеры для каждого отдельного action.type. Т.е. можно думать, что каждый такой маленький reducer (например, increase и decrease из примера выше) добавляет очередной case в switch/case конструкцию итогового reducer.
 
 Так код каписанный на redux-tookit из примера выше является аналогом следующего кода, написанного на чистом redux:
 const initialState =  { value: 0 };
